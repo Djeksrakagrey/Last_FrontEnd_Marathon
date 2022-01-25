@@ -1,5 +1,5 @@
 function Calk (operator, a, b) {
-    const CheckValid = (operator === undefined) || (a === undefined) || (b === undefined) || (typeof a !== 'number') ||
+    const CheckValid = (a === undefined) || (b === undefined) || (typeof a !== 'number') ||
         (typeof b !== 'number');
 
     const operations = {
@@ -10,16 +10,16 @@ function Calk (operator, a, b) {
     }
 
     if (CheckValid) {
-        console.log('Error');
+        return ('Error');
     } else if (operator in operations) {
-        console.log(operations[operator]);
+        return (operations[operator]);
     } else {
-        console.log('unknown operation')
+        return ('unknown operation')
     }
 }
 
 
-Calk('multi', 10, 5);
+console.log(Calk('multi', 10, 5));
 
 
 
