@@ -19,7 +19,7 @@ function Calk (operator, a, b) {
 }
 
 
-(Calk('multi', 10, 5));
+Calk('multi', 10, 5);
 
 
 
