@@ -22,7 +22,7 @@ function findTask(status) {
     let count = 0;
      for (let key in list) {
         if (list[key] === status) {
-            console.log(key);
+            console.log(' "' + key + '"');
             count++;
         }
     }
