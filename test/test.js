@@ -16,7 +16,7 @@ function showVerticalMessage(str) {
     }
 }
 
-showVerticalMessage('марафон');
+showVerticalMessage('марафонПоследний');
 
 
 
