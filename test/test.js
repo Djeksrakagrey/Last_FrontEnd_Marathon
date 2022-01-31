@@ -1,12 +1,14 @@
+const capitalLetter = 'M';
+const maxLengthString = 10;
 
 function showVerticalMessage(str) {
     let changeStr = '';
     if (str[0] === 'м') {
-        str = 'М' + str.slice(1);
+        str = capitalLetter + str.slice(1);
     }
 
-    if (str.length > 10) {
-        changeStr = str.slice(0, 10);
+    if (str.length > maxLengthString) {
+        changeStr = str.slice(0, maxLengthString);
     } else {
          changeStr = str;
     }
