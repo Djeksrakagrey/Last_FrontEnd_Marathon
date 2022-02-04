@@ -2,15 +2,18 @@ const list = [
     {name: 'create a post', status: 'In progress', priority: 'low'},
     {name: 'test', status: 'Done', priority: 'high'},
 ]
+const statuses = {
+    TO_DO: 'To Do',
+    IN_PROGRESS: 'In progress',
+    DONE: 'Done'
+}
 
-const TODO = 'To Do';
-const INPROGRESS = 'In progress';
-const DONE = 'Done';
+const priorities = {
+    LOW: 'low',
+    HIGH: 'high'
+}
 
-const LOW = 'low';
-const HIGH = 'high';
-
-function addTask(task, priority, status = TODO) {
+function addTask(task, priority, status = statuses.TO_DO) {
     list.push({name: task, status: status, priority: priority});
 }
 
@@ -30,35 +33,36 @@ function deleteTask(task) {
 }
 
 function showBy() {
-    let count = 0;
+    let flag;
+
     console.log('To Do:');
     list.forEach(function (item) {
-        if (item.status === TODO) {
+        if (item.status === statuses.TO_DO) {
             console.log(` '${item.name}'`);
-            count++;
+            flag = true;
         }
-        if (count === 0) {
+        if (flag == false) {
             console.log(' -');
         }
     });
 
     console.log('In Progress:');
     list.forEach(function (item) {
-        if (item.status === INPROGRESS) {
+        if (item.status === statuses.IN_PROGRESS) {
             console.log(` '${item.name}'`);
-            count++;
+            flag = true;
         }
-        if (count === 0) {
+        if (flag == false) {
             console.log(' -');
         }
     });
         console.log('Done:');
     list.forEach(function (item) {
-        if (item.status === DONE) {
+        if (item.status === statuses.DONE) {
             console.log(` '${item.name}'`);
-            count++;
+            flag = true;
         }
-        if (count === 0) {
+        if (flag == false) {
             console.log(' -');
         }
     });
