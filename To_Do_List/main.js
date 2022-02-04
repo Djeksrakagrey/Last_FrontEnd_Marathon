@@ -30,7 +30,7 @@ function deleteTask(task) {
 }
 
 function showBy() {
-    let count = '';
+    let count = 0;
     console.log('To Do:');
     list.forEach(function (item) {
         if (item.status === TODO) {
