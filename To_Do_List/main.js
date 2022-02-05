@@ -32,40 +32,64 @@ function deleteTask(task) {
     list.splice(foundTask, 1);
 }
 
-function showBy() {
+function showBy(category) {
     let flag;
+    if (category === 'status') {
+        console.log('To Do:');
+        list.forEach(function (item) {
+            if (item.status === statuses.TO_DO) {
+                console.log(` '${item.name}'`);
+                flag = true;
+            }
+            if (flag == false) {
+                console.log(' -');
+            }
+        });
 
-    console.log('To Do:');
-    list.forEach(function (item) {
-        if (item.status === statuses.TO_DO) {
-            console.log(` '${item.name}'`);
-            flag = true;
-        }
-        if (flag == false) {
-            console.log(' -');
-        }
-    });
-
-    console.log('In Progress:');
-    list.forEach(function (item) {
-        if (item.status === statuses.IN_PROGRESS) {
-            console.log(` '${item.name}'`);
-            flag = true;
-        }
-        if (flag == false) {
-            console.log(' -');
-        }
-    });
+        console.log('In Progress:');
+        list.forEach(function (item) {
+            if (item.status === statuses.IN_PROGRESS) {
+                console.log(` '${item.name}'`);
+                flag = true;
+            }
+            if (flag == false) {
+                console.log(' -');
+            }
+        });
         console.log('Done:');
-    list.forEach(function (item) {
-        if (item.status === statuses.DONE) {
-            console.log(` '${item.name}'`);
-            flag = true;
-        }
-        if (flag == false) {
-            console.log(' -');
-        }
-    });
+        list.forEach(function (item) {
+            if (item.status === statuses.DONE) {
+                console.log(` '${item.name}'`);
+                flag = true;
+            }
+            if (flag == false) {
+                console.log(' -');
+            }
+        });
+    }
+    if (category === 'priority') {
+        console.log('Low:');
+        list.forEach(function (item) {
+            if (item.priority === priorities.LOW) {
+                console.log(` '${item.name}'`);
+                flag = true;
+            }
+            if (flag == false) {
+                console.log(' -');
+            }
+        });
+
+        console.log('High:');
+        list.forEach(function (item) {
+            if (item.priority === priorities.HIGH) {
+                console.log(` '${item.name}'`);
+                flag = true;
+            }
+            if (flag == false) {
+                console.log(' -');
+            }
+        });
+    }
 }
 
 addTask('play PS5', 'low');
@@ -75,7 +99,7 @@ changeStatus('play PS5', 'In progress');
 changePriority('create a post', 'high');
 deleteTask('go to sleep');
 
-showBy();
+showBy('status');
 
 
 
