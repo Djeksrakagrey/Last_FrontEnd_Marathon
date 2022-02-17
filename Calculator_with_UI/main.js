@@ -6,6 +6,11 @@ const dropping = document.getElementById('dropping');
 const backspace = document.getElementById('backspace');
 const total = document.getElementById('total');
 
+let result = null;
+let firstNum = null;
+let secondNum = null;
+let operator = null;
+
 function droppingScreen() {
     screen.textContent = '0';
 }
@@ -21,21 +26,28 @@ function backspaceScreen() {
 }
 backspace.addEventListener('click', backspaceScreen);
 
-
 for (let number of numbers) {
     number.addEventListener('click', function () {
         if (screen.textContent != 0) {
-            screen.textContent += number.textContent;
+            firstNum = screen.textContent += number.textContent;
         }
         else {
-            screen.textContent = number.textContent;
+            firstNum = screen.textContent = number.textContent;
         }
 
     })
 };
 
+for (let symbol of operators) {
+    symbol.addEventListener('click', function () {
+        operator = symbol.textContent;
+        screen.textContent += symbol.textContent;
+    })
+}
 
-function calc (operator, a, b) {
+
+
+function calc () {
     const CheckValid = (operator === undefined) || (a === undefined) || (b === undefined) || (typeof a !== 'number') ||
         (typeof b !== 'number');
 
