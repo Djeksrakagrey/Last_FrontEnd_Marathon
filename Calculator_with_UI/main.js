@@ -6,13 +6,15 @@ const dropping = document.getElementById('dropping');
 const backspace = document.getElementById('backspace');
 const total = document.getElementById('total');
 
-let result = null;
 let firstNum = null;
 let secondNum = null;
 let operator = null;
 
 function droppingScreen() {
     screen.textContent = '0';
+    firstNum = null;
+    secondNum = null;
+    operator = null;
 }
 dropping.addEventListener('click', droppingScreen);
 
@@ -29,49 +31,45 @@ backspace.addEventListener('click', backspaceScreen);
 for (let number of numbers) {
     number.addEventListener('click', function () {
         if (screen.textContent != 0) {
-            firstNum = screen.textContent += number.textContent;
+            screen.textContent += number.textContent;
         }
         else {
-            firstNum = screen.textContent = number.textContent;
+            screen.textContent = number.textContent;
         }
 
     })
 };
 
+
 for (let symbol of operators) {
     symbol.addEventListener('click', function () {
+        firstNum = screen.textContent;
         operator = symbol.textContent;
-        screen.textContent += symbol.textContent;
+        screen.textContent = null;
+
+
     })
 }
 
-
-
 function calc () {
-    const CheckValid = (operator === undefined) || (a === undefined) || (b === undefined) || (typeof a !== 'number') ||
-        (typeof b !== 'number');
-
-    if (CheckValid) {
-        return 'ERROR'
-    } else {
-        switch (operator) {
-            case 'sum':
-                return a + b;
-            case 'min':
-                return a - b;
-            case 'multi':
-                return a * b;
-            case 'div':
-                return a / b;
-            case 'remOfDiv':
-                return a % b;
-            case 'exp':
-                return a ** b;
-            default:
-                return 'unknown operation';
-        }
+    secondNum = screen.textContent;
+    // alert(firstNum);
+    // alert(secondNum);
+    // alert(operator);
+    if (operator === '+') {
+        screen.textContent = +firstNum + +secondNum;
+    } else if (operator === '-') {
+        screen.textContent = firstNum - secondNum;
+    } else if (operator === '×') {
+        screen.textContent = firstNum * secondNum;
+    } else if (operator === '/' && secondNum !== 0) {
+        screen.textContent = firstNum / secondNum;
     }
 }
+
+total.addEventListener('click', calc);
+
+
 
 
 
