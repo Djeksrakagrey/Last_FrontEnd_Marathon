@@ -1,10 +1,6 @@
 
-const numbers = document.querySelectorAll('.operants');
-const operators = document.querySelectorAll('.operators');
-const screen = document.getElementById('result');
-const dropping = document.getElementById('dropping');
-const backspace = document.getElementById('backspace');
-const total = document.getElementById('total');
+import {numbers, operators, screen, dropping, backspace, total} from './view';
+
 
 let firstNum = null;
 let secondNum = null;
@@ -20,7 +16,7 @@ dropping.addEventListener('click', droppingScreen);
 
 function backspaceScreen() {
     const screenLength = screen.textContent.length;
-    if (screenLength == 1) {
+    if (screenLength === 1) {
         screen.textContent = '0';
     } else {
         screen.textContent = screen.textContent.slice(0, screenLength - 1);
@@ -38,7 +34,7 @@ for (let number of numbers) {
         }
 
     })
-};
+}
 
 
 for (let symbol of operators) {
@@ -53,11 +49,8 @@ for (let symbol of operators) {
 
 function calc () {
     secondNum = screen.textContent;
-    // alert(firstNum);
-    // alert(secondNum);
-    // alert(operator);
     if (operator === '+') {
-        screen.textContent = +firstNum + +secondNum;
+        screen.textContent = Number(firstNum) + Number(secondNum);
     } else if (operator === '-') {
         screen.textContent = firstNum - secondNum;
     } else if (operator === '×') {
